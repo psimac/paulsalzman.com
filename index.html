@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-375339094"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
+    gtag('config', 'G-375339094');
   </script>
   
   <meta charset="UTF-8">
@@ -170,10 +170,6 @@
         <a href="https://mastodon.sdf.org/@psimac" target="_blank" rel="noopener">Mastodon</a>.
       </p>
 
-      <p>
-        <a href="https://calendly.com" target="_blank" rel="noopener">Use this link to book an appointment with me</a>.
-      </p>
-
       <hr class="divider"/>
 
       <section>
@@ -210,7 +206,7 @@
 
       <section>
         <h2>Patents</h2>
-        <p>USD698311S1</p>
+        <p><a href="https://patents.google.com/patent/USD698311S1" target="_blank" rel="noopener">USD698311S1</a> - Hand-crank charging device</p>
       </section>
 
       <hr class="divider"/>
@@ -219,17 +215,66 @@
         <h2>Direct Contact</h2>
         <p>
           paul [at] paulsalzman dot com | 
-          <a href="https://calendly.com" target="_blank" rel="noopener">Book Appointment</a> | 
           <a href="https://www.linkedin.com/in/paulsalzman/" target="_blank" rel="noopener">LinkedIn Page</a>
         </p>
       </section>
 
-      <section class="subscribe">
-        <h2>Subscribe</h2>
-        <p>Enter your email below to subscribe to my blog and receive a post update.</p>
-        <form action="#" method="post">
-          <input type="email" name="email" placeholder="Your email address" required />
-          <button type="submit">Subscribe</button>
+      <section class="contact-form">
+        <h2>Contact Me</h2>
+        <p>Please enter your name, phone number and email address and I will get back with you.</p>
+        <form 
+          name="contact" 
+          method="POST" 
+          data-netlify="true" 
+          netlify-honeypot="bot-field"
+          action="/thank-you"
+        >
+          <p class="hidden">
+            <label>
+              Don't fill this out if you're human: <input name="bot-field" />
+            </label>
+          </p>
+          <input type="hidden" name="form-name" value="contact" />
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input 
+              type="text" 
+              id="name" 
+              name="name" 
+              required 
+              pattern="[A-Za-z\s]{2,}"
+              title="Please enter at least 2 characters, letters only"
+            />
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              required 
+            />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone:</label>
+            <input 
+              type="tel" 
+              id="phone" 
+              name="phone" 
+              pattern="[0-9\-\+\(\)\s]{10,}"
+              title="Please enter a valid phone number (at least 10 digits)"
+              required 
+            />
+          </div>
+          <div class="form-group">
+            <label for="message">Message (optional):</label>
+            <textarea 
+              id="message" 
+              name="message" 
+              rows="4"
+            ></textarea>
+          </div>
+          <button type="submit">Send Message</button>
         </form>
       </section>
 

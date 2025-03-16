@@ -232,6 +232,94 @@ a:hover {
   height: 20px;
 }
 
+/*
+  Contact Form
+*/
+.contact-form {
+  background: #f8f8f8;
+  padding: 25px;
+  border-radius: 5px;
+  margin-top: 3em;
+}
+
+.contact-form h2 {
+  margin-top: 0;
+  color: #222;
+  margin-bottom: 0.5em;
+}
+
+.contact-form p {
+  margin-bottom: 1.5em;
+  color: #666;
+}
+
+.form-group {
+  margin-bottom: 1.2em;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5em;
+  color: #444;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #0066cc;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.contact-form button {
+  background: #0066cc;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  width: 100%;
+}
+
+.contact-form button:hover {
+  background: #004499;
+}
+
+/* Form validation styles */
+.form-group input:invalid {
+  border-color: #ff4444;
+}
+
+.form-group input:invalid:focus {
+  border-color: #ff4444;
+}
+
+.form-group input:valid {
+  border-color: #00aa55;
+}
+
+/* Hide honeypot field */
+.hidden {
+  display: none;
+}
+
 /* 
   Responsive Design
 */
@@ -264,12 +352,7 @@ a:hover {
     height: 150px;
   }
 
-  .subscribe form {
-    flex-direction: column;
-  }
-
-  .subscribe input[type="email"],
-  .subscribe button {
-    width: 100%;
+  .contact-form {
+    padding: 20px;
   }
 }
