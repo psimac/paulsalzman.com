@@ -119,6 +119,7 @@ a {
   color: #0066cc;
   text-decoration: none;
   transition: color 0.2s ease;
+  font-weight: bold;
 }
 
 a:hover {
@@ -248,9 +249,10 @@ a:hover {
   margin-bottom: 0.5em;
 }
 
-.contact-form p {
+.contact-subtitle {
   margin-bottom: 1.5em;
   color: #666;
+  font-size: 0.9rem;
 }
 
 .form-group {
