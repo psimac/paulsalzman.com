@@ -1,0 +1,275 @@
+/* 
+  Basic Reset 
+*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*
+  Body & Global Styles
+*/
+body {
+  background: #f9f9f9;
+  font-family: 'Montserrat', sans-serif; /* from Google Fonts link in index.html */
+  color: #333;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+/*
+  Page Wrapper
+*/
+.page-wrapper {
+  max-width: 800px;
+  margin: 60px auto;
+  background: #fff;
+  padding: 40px 40px 60px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/*
+  Header
+*/
+header {
+  margin-bottom: 40px;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.header-text {
+  flex: 1;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+
+header p {
+  font-size: 1.1rem;
+  color: #666;
+}
+
+.header-image {
+  flex-shrink: 0;
+}
+
+.profile-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/*
+  Main Content
+*/
+main {
+  font-size: 1rem;
+}
+
+main p {
+  margin-bottom: 1.2em;
+}
+
+main section {
+  margin-bottom: 2em;
+}
+
+main h2 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 1em;
+  color: #222;
+}
+
+main ul {
+  list-style: none;
+  margin-left: 0;
+  margin-bottom: 1.2em;
+}
+
+main ul li {
+  margin-bottom: 0.8em;
+  position: relative;
+  padding-left: 1.2em;
+}
+
+main ul li:before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #666;
+}
+
+/*
+  Links
+*/
+a {
+  color: #0066cc;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: #004499;
+  text-decoration: underline;
+}
+
+/*
+  Divider
+*/
+.divider {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 2.5em 0;
+}
+
+/*
+  Subscribe Section
+*/
+.subscribe {
+  background: #f8f8f8;
+  padding: 25px;
+  border-radius: 5px;
+  margin-top: 3em;
+}
+
+.subscribe h2 {
+  margin-top: 0;
+  color: #222;
+}
+
+.subscribe p {
+  margin-bottom: 1.5em;
+}
+
+.subscribe form {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.subscribe input[type="email"] {
+  flex: 1;
+  min-width: 200px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.subscribe input[type="email"]:focus {
+  outline: none;
+  border-color: #0066cc;
+}
+
+.subscribe button {
+  background: #0066cc;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.subscribe button:hover {
+  background: #004499;
+}
+
+/*
+  Fin
+*/
+.fin {
+  text-align: center;
+  color: #666;
+  font-style: italic;
+  margin-top: 3em;
+}
+
+/*
+  Social Icons
+*/
+.social-icons {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #f5f5f5;
+  color: #333;
+  transition: all 0.2s ease;
+}
+
+.social-icon:hover {
+  background: #0066cc;
+  color: white;
+  transform: translateY(-2px);
+}
+
+.social-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* 
+  Responsive Design
+*/
+@media (max-width: 768px) {
+  .page-wrapper {
+    margin: 20px;
+    padding: 20px;
+  }
+
+  .header-content {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .header-text {
+    text-align: center;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
+  header h1 {
+    font-size: 2rem;
+  }
+
+  .profile-image {
+    width: 150px;
+    height: 150px;
+  }
+
+  .subscribe form {
+    flex-direction: column;
+  }
+
+  .subscribe input[type="email"],
+  .subscribe button {
+    width: 100%;
+  }
+}

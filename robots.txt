@@ -1,0 +1,15 @@
+# robots.txt for paulsalzman.com
+User-agent: *
+Allow: /
+Sitemap: https://paulsalzman.com/sitemap.xml
+
+# Prevent caching of images
+User-agent: *
+Disallow: /images/
+
+# Allow social media crawlers to access images
+User-agent: Twitterbot
+Allow: /images/
+
+User-agent: facebookexternalhit
+Allow: /images/ 
