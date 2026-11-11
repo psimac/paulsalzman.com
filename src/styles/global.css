@@ -231,9 +231,9 @@ em {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) clamp(13rem, 24vw, 19rem);
+  grid-template-columns: minmax(0, 1fr) clamp(16rem, 36vw, 28rem);
   gap: clamp(2rem, 5vw, 4.5rem);
-  align-items: end;
+  align-items: center;
 }
 
 .eyebrow {
@@ -250,7 +250,7 @@ em {
 }
 
 .hero h1 {
-  font-size: clamp(3.4rem, 10.5vw, 9.25rem);
+  font-size: clamp(3.6rem, 10vw, 9rem);
   line-height: 0.92;
   letter-spacing: -0.025em;
 }
@@ -320,7 +320,7 @@ em {
 .portrait img {
   width: 100%;
   height: auto;
-  aspect-ratio: 1;
+  aspect-ratio: 4 / 5;
   object-fit: cover;
   border-radius: 2px;
 }
@@ -342,7 +342,7 @@ em {
 }
 
 .portrait::after {
-  bottom: 1.4rem;
+  bottom: -0.45rem;
   right: -0.45rem;
   border-left: 0;
   border-top: 0;
@@ -363,7 +363,6 @@ em {
   }
 
   .portrait {
-    max-width: 14rem;
     order: -1;
   }
 }
@@ -371,7 +370,7 @@ em {
 /* Drift line */
 
 .drift {
-  margin-top: clamp(2.5rem, 6vw, 4.5rem);
+  margin-block: clamp(2.5rem, 6vw, 4.5rem);
 }
 
 .drift svg {
@@ -687,6 +686,41 @@ a.row:hover .row-arrow {
   flex-wrap: wrap;
   gap: 0.75rem 2rem;
   margin-top: 2rem;
+}
+
+/* Timeline */
+
+.row.timeline {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 3fr);
+}
+
+.row-when {
+  color: var(--muted);
+}
+
+.row-title a {
+  transition: color 0.2s;
+}
+
+.row-title a:hover {
+  color: var(--signal);
+}
+
+.row-title .row-arrow {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 0.6em;
+}
+
+@media (max-width: 760px) {
+  .row.timeline {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .row.timeline .row-desc {
+    grid-row: auto;
+  }
 }
 
 /* Off the clock */

@@ -15,21 +15,21 @@ const html = `<!doctype html><html><head><style>
 @font-face { font-family: M; src: url(${file(mono)}); }
 * { margin: 0; box-sizing: border-box; }
 body { width: 1200px; height: 630px; background: #f2eee5; color: #15130f; padding: 64px 72px;
-  display: grid; grid-template-columns: 1fr 300px; gap: 56px; align-items: center; }
+  display: grid; grid-template-columns: 1fr 400px; gap: 56px; align-items: center; }
 .m { font: 500 18px M; letter-spacing: .1em; text-transform: uppercase; color: #625d53; }
 .m b { color: #d43a17; font-weight: 500; margin-right: 14px; }
-h1 { font: 400 124px/0.92 S; letter-spacing: -0.025em; margin: 30px 0 34px; }
+h1 { font: 400 150px/0.92 S; letter-spacing: -0.025em; margin: 30px 0 34px; }
 em { color: #d43a17; }
-img { width: 300px; height: 300px; display: block; }
+img { width: 400px; height: 500px; object-fit: cover; display: block; }
 svg { width: 100%; height: 40px; margin-bottom: 26px; }
 </style></head><body>
 <div>
   <p class="m"><b>Paul Salzman</b></p>
-  <h1>Organizations drift. <em>I find the source.</em></h1>
+  <h1>Hi, I’m <em>Paul.</em></h1>
   <svg viewBox="0 0 700 40" preserveAspectRatio="none"><path d="M0 20C30 -6 55 44 90 22S150 4 190 24s70 6 110-3 80 3 120-1h280" fill="none" stroke="#d43a17" stroke-width="2.5" stroke-linecap="round"/></svg>
-  <p class="m">Organizational Strategy &amp; Transformation · paulsalzman.com</p>
+  <p class="m">Founder · Builder · Writer · paulsalzman.com</p>
 </div>
-<img src="${file('public/images/paul-salzman-800.webp')}" />
+<img src="${file('public/images/paul-salzman-1200.webp')}" />
 </body></html>`;
 
 const browser = await chromium.launch();

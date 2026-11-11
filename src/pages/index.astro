@@ -1,9 +1,9 @@
 ---
 import Base from '../layouts/Base.astro';
 
-const title = 'Paul Salzman | Organizational Strategy & Transformation Leader';
+const title = 'Paul Salzman | Founder, Builder, Writer';
 const description =
-  'Paul Salzman. Organizational Strategy & Transformation Leader. Helping founders and executives restore clarity, align teams, and rebuild the systems that drive performance.';
+  'Paul Salzman. Founder of Wheelio and CreativeHydra. More than twenty years in technology and business management, building companies, fixing the ones that are stuck, and writing about it.';
 
 // Latest posts from the blog, fetched when the site is built.
 // If the feed cannot be reached, the build falls back to this list.
@@ -66,56 +66,97 @@ const fmt = new Intl.DateTimeFormat('en-US', {
   timeZone: 'UTC',
 });
 
-const fixes = [
+const work = [
   {
-    name: 'Clarity',
-    text: 'Diagnose breakdowns in decision-making, culture, roles, and expectations. Reveal what is actually happening inside an organization, not what people assume is happening.',
-  },
-  {
-    name: 'Alignment',
-    text: 'Rebuild operating systems, workflows, and leadership structures so teams move with shared purpose instead of competing priorities.',
-  },
-  {
-    name: 'Execution',
-    text: 'Turn strategy into reliable, repeatable systems. Establish rhythms of accountability, communication, and cross-functional coordination.',
-  },
-];
-
-const capabilities = [
-  'Fractional CSO / COO Support',
-  'Automotive Retail Strategy',
-  'Culture Architecture & Implementation',
-  'Operational Flow & Friction Removal',
-  'Organizational Diagnostics',
-  'AI Integration & Systems Design',
-  'Communication Systems',
-  'Transformation Roadmaps',
-  'Leadership Advisory',
-];
-
-const ventures = [
-  {
-    name: 'CreativeHydra',
-    meta: 'Business Systems & AI Consulting',
-    text: 'Helping small business owners align tools, processes, and teams so their business actually flows. Home of the FLOW business assessment.',
-    url: 'https://www.creativehydra.com',
-  },
-  {
+    when: 'Now',
     name: 'Wheelio',
-    meta: 'Automotive Search & SaaS Platform',
-    text: 'Treating car shopping like a matching problem, not an ad auction.',
+    role: 'Founder',
+    text: 'A search engine for cars. It treats car shopping as a matching problem and brings buyers to dealers.',
     url: 'https://wheelio.com',
   },
   {
-    name: 'Advisory',
-    meta: 'Fractional CSO / COO',
-    text: 'Senior strategy and operations leadership for growth-stage companies.',
+    when: '2016 to now',
+    name: 'CreativeHydra',
+    role: 'Founder',
+    text: 'Business systems, AI consulting, and websites for small and mid-sized businesses. Home of FLOW, an assessment that shows where work stalls and what to fix first.',
+    url: 'https://www.creativehydra.com',
+  },
+  {
+    when: '2023 to 2025',
+    name: 'Porsche Seattle North',
+    role: 'Sales Executive and Certified Brand Ambassador',
+    text: 'Joined the founding team of a new location and helped set its customer service standards.',
+  },
+  {
+    when: '2008 to 2016',
+    name: 'Apple',
+    role: 'Business Specialist, Visuals Expert, Sales Specialist',
+    text: 'Eight years in Greater Seattle and Southern California. Helped open three new stores.',
+  },
+  {
+    when: '2014',
+    name: 'SOScharger',
+    role: 'Co-developer and primary designer',
+    text: 'A hand-crank charger for mobile phones. It earned U.S. design patent D698,311.',
+    url: 'https://patents.google.com/patent/USD698311S1',
+  },
+  {
+    when: 'Earlier',
+    name: 'HydraMedia',
+    role: 'Co-founder',
+    text: 'A web development and affiliate marketing company in Kirkland, WA.',
+  },
+  {
+    when: 'Earlier',
+    name: 'Print and podcasts',
+    role: 'Columnist and host',
+    text: 'Columnist and story writer for Computer Source and Computer Consumer magazines. Host of Autotalk, an early automotive podcast, and Vexed Tech.',
+  },
+];
+
+const beliefs = [
+  {
+    name: 'Clarity',
+    text: 'See what is actually happening inside a business before changing anything.',
+  },
+  {
+    name: 'Alignment',
+    text: 'Get people, systems, and decisions pointed the same way.',
+  },
+  {
+    name: 'Execution',
+    text: 'Turn the plan into simple routines that hold up on a busy day.',
+  },
+];
+
+const life = [
+  {
+    label: 'Volunteer',
+    name: 'Porsche Club of America',
+    text: 'Social Co-Chair for the Pacific Northwest Region since July 2023. I help build community and organize events in one of the club’s most active chapters.',
+    link: 'pnwr.org',
+    url: 'https://pnwr.org',
+  },
+  {
+    label: 'On the air',
+    name: 'W7VLT',
+    text: 'Licensed amateur radio operator in the Puget Sound area.',
+    link: 'Mastodon',
+    url: 'https://mastodon.sdf.org/@psimac',
+    rel: 'me',
+  },
+  {
+    label: 'Advisory',
+    name: 'Fractional CSO / COO',
+    text: 'Senior strategy and operations help for founders and growth-stage companies.',
+    link: 'Get in touch',
     url: '#contact',
   },
   {
+    label: 'Local',
     name: 'Mobile Notary',
-    meta: 'King & Snohomish Counties',
-    text: 'Certified mobile notary serving the greater Seattle area. Legal documents, affidavits, powers of attorney, and general notarizations at your location.',
+    text: 'Certified mobile notary serving King and Snohomish Counties.',
+    link: 'notary.paulsalzman.com',
     url: 'https://notary.paulsalzman.com',
   },
 ];
@@ -137,35 +178,22 @@ const jsonLd = {
       '@id': 'https://paulsalzman.com/#person',
       name: 'Paul Salzman',
       url: 'https://paulsalzman.com',
-      image: 'https://paulsalzman.com/images/paul-salzman-800.webp',
-      jobTitle: 'Organizational Strategy & Transformation Leader',
+      image: 'https://paulsalzman.com/images/paul-salzman-1200.webp',
+      jobTitle: 'Founder',
       description:
-        'Helping founders and executives restore clarity, align teams, and rebuild systems.',
+        'Founder of Wheelio and CreativeHydra, with more than twenty years in technology and business management.',
       sameAs: socials.map((s) => s.url).concat('https://blog.paulsalzman.com'),
-      hasOccupation: [
-        { '@type': 'Occupation', name: 'Organizational Strategy & Transformation Consultant' },
-        { '@type': 'Occupation', name: 'Notary Public' },
+      worksFor: [
+        { '@type': 'Organization', name: 'Wheelio', url: 'https://wheelio.com' },
+        { '@type': 'Organization', name: 'CreativeHydra', url: 'https://www.creativehydra.com' },
       ],
     },
     {
       '@type': 'WebSite',
       '@id': 'https://paulsalzman.com/#website',
       url: 'https://paulsalzman.com',
-      name: 'Paul Salzman | Organizational Strategy',
+      name: 'Paul Salzman',
       publisher: { '@id': 'https://paulsalzman.com/#person' },
-    },
-    {
-      '@type': 'Organization',
-      '@id': 'https://paulsalzman.com/#organization',
-      name: 'Paul Salzman Consulting',
-      url: 'https://paulsalzman.com',
-      logo: 'https://paulsalzman.com/images/favicon-512.png',
-      founder: { '@id': 'https://paulsalzman.com/#person' },
-      contactPoint: {
-        '@type': 'ContactPoint',
-        contactType: 'consulting',
-        email: 'paul@paulsalzman.com',
-      },
     },
   ],
 };
@@ -179,13 +207,13 @@ const jsonLd = {
       <a class="brand" href="#top">Paul Salzman<span>.</span></a>
       <nav class="nav mono" aria-label="Primary">
         <a href="#about">About</a>
-        <a href="#services">What I Fix</a>
+        <a href="#work">Work</a>
+        <a href="#beliefs">Beliefs</a>
         <a href="#writing">Writing</a>
-        <a href="#ventures">Ventures</a>
+        <a href="#life">Life</a>
         <a class="out" href="https://blog.paulsalzman.com">Ich Spreche</a>
-        <a class="out" href="https://notary.paulsalzman.com">Mobile Notary</a>
       </nav>
-      <a class="pill mono" href="#contact">Get in touch</a>
+      <a class="pill mono" href="#contact">Say hello</a>
     </div>
   </header>
 
@@ -195,35 +223,125 @@ const jsonLd = {
         <div>
           <p class="eyebrow mono">
             <b>Paul Salzman</b>
-            <span>Organizational Strategy & Transformation Leader</span>
+            <span>Greater Seattle</span>
           </p>
-          <h1 class="serif">Organizations drift. <em>I find the source.</em></h1>
+          <h1 class="serif">Hi, I’m <em>Paul.</em></h1>
           <p class="lede">
-            <strong>Flow breaks down. Decisions stall, teams misalign, execution grinds.</strong>
-            {' '}I find where it starts and rebuild the systems that get things moving again.
+            <strong>I start companies, fix the ones that are stuck, and write about what I learn.</strong>
+            {' '}More than twenty years in technology and business management. Founder of Wheelio
+            and CreativeHydra. Car guy in the Pacific Northwest.
           </p>
           <div class="hero-cta">
-            <a class="btn" href="#contact">Get in touch <span aria-hidden="true">→</span></a>
-            <a class="link" href="#services">See what I fix</a>
+            <a class="btn" href="#work">What I’ve done <span aria-hidden="true">↓</span></a>
+            <a class="link" href="#contact">Say hello</a>
           </div>
         </div>
 
         <figure class="portrait">
           <img
-            src="/images/paul-salzman-800.webp"
-            srcset="/images/paul-salzman-400.webp 400w, /images/paul-salzman-800.webp 800w"
-            sizes="(min-width: 760px) 24vw, 224px"
-            width="800"
-            height="800"
-            alt="Portrait of Paul Salzman, smiling"
+            src="/images/paul-salzman-1200.webp"
+            srcset="/images/paul-salzman-600.webp 600w, /images/paul-salzman-1200.webp 1200w"
+            sizes="(min-width: 760px) 36vw, 90vw"
+            width="1200"
+            height="1500"
+            alt="Paul Salzman sitting on stone steps outside a cabin in the woods"
             fetchpriority="high"
             decoding="async"
           />
-          <figcaption class="mono">
-            <span>Paul Salzman</span>
-            <span>Greater Seattle</span>
-          </figcaption>
         </figure>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <ul class="facts mono">
+        <li>Founder, Wheelio</li>
+        <li>Founder, CreativeHydra</li>
+        <li>20+ years in technology & business</li>
+        <li>Patent holder</li>
+      </ul>
+    </div>
+
+    <section class="section wrap" id="about">
+      <div class="section-head reveal">
+        <p class="mono"><b>01</b> / About</p>
+        <h2 class="serif">The short version</h2>
+      </div>
+      <div class="split">
+        <div class="body reveal">
+          <div class="prose">
+            <p>
+              I’ve spent more than twenty years in <strong>technology and business management</strong>.
+              In that time I’ve started companies, helped open three Apple stores, joined the
+              founding team of a Porsche dealership, designed a product that earned a patent, and
+              written about all of it along the way.
+            </p>
+            <p>
+              The thread through it is simple. <strong>I like finding where things get stuck and
+              making them work again.</strong> Sometimes that is a business. Sometimes it is a
+              workflow, a team, or the way people shop for a car.
+            </p>
+            <p>
+              Today I’m building Wheelio, running CreativeHydra, and advising founders and
+              operators who feel their company has drifted.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap" id="work" style="padding-top:0">
+      <div class="section-head reveal">
+        <p class="mono"><b>02</b> / Work</p>
+        <h2 class="serif">What I’ve done</h2>
+      </div>
+      <ol class="rows">
+        {
+          work.map((w) => (
+            <li class="row timeline reveal">
+              <span class="row-when mono">{w.when}</span>
+              <span>
+                <span class="row-title">
+                  {w.url ? (
+                    <a href={w.url}>
+                      {w.name} <span class="row-arrow" aria-hidden="true">↗</span>
+                    </a>
+                  ) : (
+                    w.name
+                  )}
+                </span>
+                <span class="row-meta mono">{w.role}</span>
+              </span>
+              <span class="row-desc">{w.text}</span>
+            </li>
+          ))
+        }
+      </ol>
+    </section>
+
+    <section class="section wrap" id="beliefs" style="padding-top:0">
+      <div class="section-head reveal">
+        <p class="mono"><b>03</b> / Beliefs</p>
+        <h2 class="serif">Less is more</h2>
+      </div>
+      <div class="split">
+        <div class="body reveal">
+          <div class="prose">
+            <p>
+              I believe that less is more when it comes to business.{' '}
+              <strong
+                >Removing the complications from a workflow and editing a business down to its
+                bare metal is a huge challenge.</strong
+              >
+              {' '}It is also where most of the value is.
+            </p>
+            <p>
+              Organizations drift. Decisions stall, teams pull in different directions, and the
+              work gets heavy. Companies succeed or fail on how well their people, systems, and
+              decisions line up. I’m a longtime follower of Michael Gerber’s <em>E-Myth</em>, and I
+              build my own businesses and my clients’ businesses on that thinking.
+            </p>
+          </div>
+        </div>
       </div>
 
       <div class="drift" aria-hidden="true">
@@ -235,87 +353,30 @@ const jsonLd = {
           <span>Flow</span>
         </div>
       </div>
-    </section>
 
-    <div class="wrap">
-      <ul class="facts mono">
-        <li>Founder & Executive Strategy Advisor</li>
-        <li>Fractional CSO / COO</li>
-        <li>20+ Years Automotive & Tech</li>
-        <li>Operational Transformation</li>
-      </ul>
-    </div>
-
-    <section class="section wrap" id="about">
-      <div class="section-head reveal">
-        <p class="mono"><b>01</b> / Profile</p>
-        <h2 class="serif">About my work</h2>
-      </div>
-      <div class="split">
-        <div class="body reveal">
-          <div class="prose">
-            <p>
-              My work centers on <strong>organizational clarity</strong>: understanding how
-              companies drift, why teams misalign, and where execution breaks down. I help leaders
-              rebuild the systems, expectations, and communication patterns that allow teams to do
-              their best work again.
-            </p>
-            <p>
-              With two decades across <strong>automotive retail consulting</strong>,{' '}
-              <strong>technology strategy</strong>, and <strong>leadership advisory</strong>, I’ve
-              seen the same pattern everywhere. Companies succeed or fail based on the truth of how
-              well their people, systems, and decisions align. That belief defines everything I do.
-            </p>
-          </div>
-          <div class="principles">
-            <p class="mono">Core principles</p>
-            <p>Clarity. Alignment. Execution. <span>Culture that sustains them.</span></p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="services" style="padding-top:0">
-      <div class="wrap">
-        <div class="section-head reveal">
-          <p class="mono"><b>02</b> / Services</p>
-          <h2 class="serif">What I fix</h2>
-        </div>
-        <div class="fixes">
-          {
-            fixes.map((f, i) => (
-              <article class="fix reveal" style={`--d:${i * 0.1}s`}>
-                <p class="mono">{`0${i + 1}`}</p>
-                <h3>{f.name}</h3>
-                <p>{f.text}</p>
-              </article>
-            ))
-          }
-        </div>
-      </div>
-
-      <div class="marquee" aria-label="Capabilities">
-        <div class="marquee-track">
-          <ul>
-            {capabilities.map((c) => <li>{c}</li>)}
-          </ul>
-          <ul aria-hidden="true">
-            {capabilities.map((c) => <li>{c}</li>)}
-          </ul>
-        </div>
+      <div class="fixes">
+        {
+          beliefs.map((f, i) => (
+            <article class="fix reveal" style={`--d:${i * 0.1}s`}>
+              <p class="mono">{`0${i + 1}`}</p>
+              <h3>{f.name}</h3>
+              <p>{f.text}</p>
+            </article>
+          ))
+        }
       </div>
     </section>
 
     <section class="section wrap" id="writing" style="padding-top:0">
       <div class="section-head reveal">
-        <p class="mono"><b>03</b> / Thinking</p>
-        <h2 class="serif">Writing</h2>
+        <p class="mono"><b>04</b> / Writing</p>
+        <h2 class="serif">What I’m thinking about</h2>
       </div>
       <div class="split">
         <div class="body">
           <p class="prose reveal" style="margin-bottom:2.5rem">
-            I write about organizational systems, leadership, the automotive industry, and the
-            philosophy of operational truth. The latest from <strong>Ich Spreche</strong>:
+            I write about business, leadership, technology, and the car industry on my blog,{' '}
+            <strong>Ich Spreche</strong>. Here are the latest posts.
           </p>
           <div class="rows">
             {
@@ -342,67 +403,24 @@ const jsonLd = {
       </div>
     </section>
 
-    <section class="section wrap" id="ventures" style="padding-top:0">
+    <section class="section wrap" id="life" style="padding-top:0">
       <div class="section-head reveal">
-        <p class="mono"><b>04</b> / Projects</p>
-        <h2 class="serif">Current ventures</h2>
-      </div>
-      <div class="rows">
-        {
-          ventures.map((v) => (
-            <a class="row reveal" href={v.url}>
-              <span>
-                <span class="row-title">{v.name}</span>
-                <span class="row-meta mono">{v.meta}</span>
-              </span>
-              <span class="row-desc">{v.text}</span>
-              <span class="row-arrow" aria-hidden="true">
-                {v.url.startsWith('#') ? '→' : '↗'}
-              </span>
-            </a>
-          ))
-        }
-      </div>
-    </section>
-
-    <section class="section wrap" id="off-the-clock" style="padding-top:0">
-      <div class="section-head reveal">
-        <p class="mono"><b>05</b> / Off the clock</p>
-        <h2 class="serif">Cars, radios, and a patent</h2>
+        <p class="mono"><b>05</b> / Life</p>
+        <h2 class="serif">Cars, radios, and community</h2>
       </div>
       <div class="cards reveal">
-        <article class="card">
-          <p class="mono">Volunteer</p>
-          <h3>Porsche Club of America</h3>
-          <p>
-            Social Co-Chair for the Pacific Northwest Region since July 2023. Building community
-            and organizing events in one of the club’s most active chapters.
-          </p>
-          <a class="link" href="https://pnwr.org">pnwr.org</a>
-        </article>
-        <article class="card">
-          <p class="mono">On the air</p>
-          <h3>W7VLT</h3>
-          <p>Licensed amateur radio operator in the Puget Sound area. Car guy, tech guy, radio guy.</p>
-          <a class="link" href="https://mastodon.sdf.org/@psimac" rel="me">Mastodon</a>
-        </article>
-        <article class="card">
-          <p class="mono">Inventor</p>
-          <h3>SOScharger</h3>
-          <p>
-            Co-developer and primary designer of a hand-crank mobile phone charger. U.S. design
-            patent D698,311.
-          </p>
-          <a class="link" href="https://patents.google.com/patent/USD698311S1">View the patent</a>
-        </article>
-        <article class="card">
-          <p class="mono">Earlier chapters</p>
-          <h3>Builder and columnist</h3>
-          <p>
-            Co-founded HydraMedia in Kirkland, WA. Wrote columns for Computer Source and Computer
-            Consumer magazines.
-          </p>
-        </article>
+        {
+          life.map((c) => (
+            <article class="card">
+              <p class="mono">{c.label}</p>
+              <h3>{c.name}</h3>
+              <p>{c.text}</p>
+              <a class="link" href={c.url} rel={c.rel}>
+                {c.link}
+              </a>
+            </article>
+          ))
+        }
       </div>
     </section>
 
@@ -410,11 +428,10 @@ const jsonLd = {
       <div class="wrap contact-grid">
         <div class="reveal">
           <p class="mono">Contact</p>
-          <h2 class="serif">Feeling the <em>drift?</em></h2>
+          <h2 class="serif">Say <em>hello.</em></h2>
           <p>
-            If you’re a founder, executive, or operator and feel your organization is drifting,
-            misaligned, or stuck, I can help you diagnose what’s really happening and chart a path
-            forward.
+            If you want to talk about a business that feels stuck, an idea, or cars, I’d like to
+            hear from you.
           </p>
           <p class="direct">
             Or email directly:{' '}
@@ -443,8 +460,8 @@ const jsonLd = {
             <input id="email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required />
           </div>
           <div class="field">
-            <label class="mono" for="message">How can I help?</label>
-            <textarea id="message" name="message" rows="4" placeholder="Tell me a bit about your challenge."></textarea>
+            <label class="mono" for="message">Message</label>
+            <textarea id="message" name="message" rows="4" placeholder="What’s on your mind?"></textarea>
           </div>
           <button class="btn" type="submit">Send message <span aria-hidden="true">→</span></button>
         </form>
