@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 
 const title = 'Paul Salzman | Founder, Builder, Writer';
 const description =
-  'Paul Salzman. Founder of Wheelio and CreativeHydra. More than twenty years in technology and business management, building companies, fixing the ones that are stuck, and writing about it.';
+  'Paul Salzman. Founder of Wheelio and CreativeHydra. I rehabilitate companies and train people to run them. More than twenty years in technology and business management.';
 
 // Latest posts from the blog, fetched when the site is built.
 // If the feed cannot be reached, the build falls back to this list.
@@ -67,80 +67,34 @@ const fmt = new Intl.DateTimeFormat('en-US', {
 });
 
 const work = [
-  {
-    when: 'Now',
-    name: 'Wheelio',
-    role: 'Founder',
-    text: 'A search engine for cars. It treats car shopping as a matching problem and brings buyers to dealers.',
-    url: 'https://wheelio.com',
-  },
-  {
-    when: '2016 to now',
-    name: 'CreativeHydra',
-    role: 'Founder',
-    text: 'Business systems, AI consulting, and websites for small and mid-sized businesses. Home of FLOW, an assessment that shows where work stalls and what to fix first.',
-    url: 'https://www.creativehydra.com',
-  },
-  {
-    when: '2023 to 2025',
-    name: 'Porsche Seattle North',
-    role: 'Sales Executive and Certified Brand Ambassador',
-    text: 'Joined the founding team of a new location and helped set its customer service standards.',
-  },
-  {
-    when: '2008 to 2016',
-    name: 'Apple',
-    role: 'Business Specialist, Visuals Expert, Sales Specialist',
-    text: 'Eight years in Greater Seattle and Southern California. Helped open three new stores.',
-  },
-  {
-    when: '2014',
-    name: 'SOScharger',
-    role: 'Co-developer and primary designer',
-    text: 'A hand-crank charger for mobile phones. It earned U.S. design patent D698,311.',
-    url: 'https://patents.google.com/patent/USD698311S1',
-  },
-  {
-    when: 'Earlier',
-    name: 'HydraMedia',
-    role: 'Co-founder',
-    text: 'A web development and affiliate marketing company in Kirkland, WA.',
-  },
-  {
-    when: 'Earlier',
-    name: 'Print and podcasts',
-    role: 'Columnist and host',
-    text: 'Columnist and story writer for Computer Source and Computer Consumer magazines. Host of Autotalk, an early automotive podcast, and Vexed Tech.',
-  },
+  { name: 'Wheelio', role: 'Founder', when: 'Now', url: 'https://wheelio.com' },
+  { name: 'CreativeHydra', role: 'Founder', when: '2016 to now', url: 'https://www.creativehydra.com' },
+  { name: 'Porsche Seattle North', role: 'Founding team, Certified Brand Ambassador', when: '2023 to 2025' },
+  { name: 'Apple', role: 'Business Specialist. Opened three stores.', when: '2008 to 2016' },
+  { name: 'SOScharger', role: 'Designer and patent holder', when: '2014', url: 'https://patents.google.com/patent/USD698311S1' },
+  { name: 'HydraMedia', role: 'Co-founder', when: 'Earlier' },
+  { name: 'Computer Source', role: 'Columnist', when: 'Earlier' },
+  { name: 'Autotalk and Vexed Tech', role: 'Podcast host', when: 'Earlier' },
 ];
 
 const beliefs = [
-  {
-    name: 'Clarity',
-    text: 'See what is actually happening inside a business before changing anything.',
-  },
-  {
-    name: 'Alignment',
-    text: 'Get people, systems, and decisions pointed the same way.',
-  },
-  {
-    name: 'Execution',
-    text: 'Turn the plan into simple routines that hold up on a busy day.',
-  },
+  { name: 'Clarity', text: 'See what is actually happening.' },
+  { name: 'Alignment', text: 'Point people, systems, and decisions the same way.' },
+  { name: 'Execution', text: 'Build routines that hold up on a busy day.' },
 ];
 
 const life = [
   {
     label: 'Volunteer',
     name: 'Porsche Club of America',
-    text: 'Social Co-Chair for the Pacific Northwest Region since July 2023. I help build community and organize events in one of the club’s most active chapters.',
+    text: 'Social Co-Chair, Pacific Northwest Region, since 2023.',
     link: 'pnwr.org',
     url: 'https://pnwr.org',
   },
   {
     label: 'On the air',
     name: 'W7VLT',
-    text: 'Licensed amateur radio operator in the Puget Sound area.',
+    text: 'Licensed amateur radio operator.',
     link: 'Mastodon',
     url: 'https://mastodon.sdf.org/@psimac',
     rel: 'me',
@@ -148,14 +102,14 @@ const life = [
   {
     label: 'Advisory',
     name: 'Fractional CSO / COO',
-    text: 'Senior strategy and operations help for founders and growth-stage companies.',
+    text: 'Strategy and operations help for founders.',
     link: 'Get in touch',
     url: '#contact',
   },
   {
     label: 'Local',
     name: 'Mobile Notary',
-    text: 'Certified mobile notary serving King and Snohomish Counties.',
+    text: 'Serving King and Snohomish Counties.',
     link: 'notary.paulsalzman.com',
     url: 'https://notary.paulsalzman.com',
   },
@@ -203,6 +157,7 @@ const jsonLd = {
   <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
 
   <header class="site-header">
+    <span class="progress" aria-hidden="true"></span>
     <div class="wrap">
       <a class="brand" href="#top">Paul Salzman<span>.</span></a>
       <nav class="nav mono" aria-label="Primary">
@@ -227,9 +182,8 @@ const jsonLd = {
           </p>
           <h1 class="serif">Hi, I’m <em>Paul.</em></h1>
           <p class="lede">
-            <strong>I start companies, fix the ones that are stuck, and write about what I learn.</strong>
-            {' '}More than twenty years in technology and business management. Founder of Wheelio
-            and CreativeHydra. Car guy in the Pacific Northwest.
+            <strong>I rehabilitate companies and train people to run them.</strong>
+            {' '}Founder of Wheelio and CreativeHydra. Car guy in the Pacific Northwest.
           </p>
           <div class="hero-cta">
             <a class="btn" href="#work">What I’ve done <span aria-hidden="true">↓</span></a>
@@ -256,7 +210,7 @@ const jsonLd = {
       <ul class="facts mono">
         <li>Founder, Wheelio</li>
         <li>Founder, CreativeHydra</li>
-        <li>20+ years in technology & business</li>
+        <li>20+ years in technology and business</li>
         <li>Patent holder</li>
       </ul>
     </div>
@@ -268,21 +222,11 @@ const jsonLd = {
       </div>
       <div class="split">
         <div class="body reveal">
-          <div class="prose">
+          <div class="prose big">
             <p>
-              I’ve spent more than twenty years in <strong>technology and business management</strong>.
-              In that time I’ve started companies, helped open three Apple stores, joined the
-              founding team of a Porsche dealership, designed a product that earned a patent, and
-              written about all of it along the way.
-            </p>
-            <p>
-              The thread through it is simple. <strong>I like finding where things get stuck and
-              making them work again.</strong> Sometimes that is a business. Sometimes it is a
-              workflow, a team, or the way people shop for a car.
-            </p>
-            <p>
-              Today I’m building Wheelio, running CreativeHydra, and advising founders and
-              operators who feel their company has drifted.
+              For more than twenty years I’ve worked in technology and business management.
+              {' '}<strong>I find where a company is stuck, get it working again, and teach its
+              people to keep it that way.</strong>
             </p>
           </div>
         </div>
@@ -294,26 +238,23 @@ const jsonLd = {
         <p class="mono"><b>02</b> / Work</p>
         <h2 class="serif">What I’ve done</h2>
       </div>
-      <ol class="rows">
+      <ol class="index">
         {
-          work.map((w) => (
-            <li class="row timeline reveal">
-              <span class="row-when mono">{w.when}</span>
-              <span>
-                <span class="row-title">
-                  {w.url ? (
-                    <a href={w.url}>
-                      {w.name} <span class="row-arrow" aria-hidden="true">↗</span>
-                    </a>
-                  ) : (
-                    w.name
-                  )}
-                </span>
-                <span class="row-meta mono">{w.role}</span>
-              </span>
-              <span class="row-desc">{w.text}</span>
-            </li>
-          ))
+          work.map((w) => {
+            const Tag = w.url ? 'a' : 'div';
+            return (
+              <li class="reveal">
+                <Tag class="index-row" href={w.url}>
+                  <span class="index-name serif">{w.name}</span>
+                  <span class="index-role">{w.role}</span>
+                  <span class="index-when mono">
+                    {w.when}
+                    {w.url && <span aria-hidden="true"> ↗</span>}
+                  </span>
+                </Tag>
+              </li>
+            );
+          })
         }
       </ol>
     </section>
@@ -323,26 +264,10 @@ const jsonLd = {
         <p class="mono"><b>03</b> / Beliefs</p>
         <h2 class="serif">Less is more</h2>
       </div>
-      <div class="split">
-        <div class="body reveal">
-          <div class="prose">
-            <p>
-              I believe that less is more when it comes to business.{' '}
-              <strong
-                >Removing the complications from a workflow and editing a business down to its
-                bare metal is a huge challenge.</strong
-              >
-              {' '}It is also where most of the value is.
-            </p>
-            <p>
-              Organizations drift. Decisions stall, teams pull in different directions, and the
-              work gets heavy. Companies succeed or fail on how well their people, systems, and
-              decisions line up. I’m a longtime follower of Michael Gerber’s <em>E-Myth</em>, and I
-              build my own businesses and my clients’ businesses on that thinking.
-            </p>
-          </div>
-        </div>
-      </div>
+      <blockquote class="pull serif reveal">
+        Editing a business down to its <em>bare metal</em> is a huge challenge. It is also where
+        the value is.
+      </blockquote>
 
       <div class="drift" aria-hidden="true">
         <svg data-drift preserveAspectRatio="none">
@@ -375,8 +300,7 @@ const jsonLd = {
       <div class="split">
         <div class="body">
           <p class="prose reveal" style="margin-bottom:2.5rem">
-            I write about business, leadership, technology, and the car industry on my blog,{' '}
-            <strong>Ich Spreche</strong>. Here are the latest posts.
+            The latest from my blog,{' '}<strong>Ich Spreche</strong>.
           </p>
           <div class="rows">
             {
@@ -430,8 +354,7 @@ const jsonLd = {
           <p class="mono">Contact</p>
           <h2 class="serif">Say <em>hello.</em></h2>
           <p>
-            If you want to talk about a business that feels stuck, an idea, or cars, I’d like to
-            hear from you.
+            A business that feels stuck, an idea, or cars. I’d like to hear about it.
           </p>
           <p class="direct">
             Or email directly:{' '}
@@ -469,6 +392,8 @@ const jsonLd = {
     </section>
   </main>
 
+  <div class="wordmark serif" aria-hidden="true">Paul Salzman<span>.</span></div>
+
   <footer class="site-footer mono">
     <div class="wrap">
       <p>© {new Date().getFullYear()} Paul Salzman</p>
@@ -495,14 +420,24 @@ const jsonLd = {
 
     if (svg && path) {
       let visible = true;
+      let px = -1;
+      let push = 0;
+      svg.parentElement?.addEventListener('pointermove', (e) => {
+        px = e.clientX - svg.getBoundingClientRect().left;
+        push = 1;
+      });
       const draw = (t: number) => {
         const w = svg.clientWidth;
         const mid = svg.clientHeight / 2;
-        const calm = Math.min(1, window.scrollY / (window.innerHeight * 0.7));
+        const r = svg.getBoundingClientRect();
+        // Settles as it travels up the screen.
+        const calm = Math.min(1, Math.max(0, 1 - r.top / (window.innerHeight * 0.8)));
+        push *= 0.96;
         let d = '';
         for (let x = 0; x <= w; x += 6) {
           const p = x / w;
-          const amp = (mid - 4) * Math.pow(1 - p, 1.6) * (1 - calm * 0.85);
+          const near = px < 0 ? 0 : Math.exp(-Math.pow((x - px) / 90, 2)) * push;
+          const amp = (mid - 4) * (Math.pow(1 - p, 1.6) * (1 - calm * 0.8) + near * 0.9);
           const y =
             mid +
             amp *
@@ -525,6 +460,15 @@ const jsonLd = {
         requestAnimationFrame(tick);
       }
     }
+
+    // Reading progress along the top of the header.
+    const bar = document.querySelector<HTMLElement>('.progress');
+    const setBar = () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      if (bar) bar.style.transform = `scaleX(${max > 0 ? window.scrollY / max : 0})`;
+    };
+    window.addEventListener('scroll', setBar, { passive: true });
+    setBar();
 
     // Reveal sections as they scroll into view.
     const items = document.querySelectorAll('.reveal');

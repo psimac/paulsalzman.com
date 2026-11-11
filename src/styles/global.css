@@ -250,7 +250,7 @@ em {
 }
 
 .hero h1 {
-  font-size: clamp(3.6rem, 10vw, 9rem);
+  font-size: clamp(4rem, 11.5vw, 10.5rem);
   line-height: 0.92;
   letter-spacing: -0.025em;
 }
@@ -686,6 +686,123 @@ a.row:hover .row-arrow {
   flex-wrap: wrap;
   gap: 0.75rem 2rem;
   margin-top: 2rem;
+}
+
+/* Work index */
+
+.index {
+  border-top: 1px solid var(--ink);
+}
+
+.index-row {
+  display: grid;
+  grid-template-columns: minmax(0, 6fr) minmax(0, 4fr) minmax(7rem, auto);
+  gap: 0.25rem 2rem;
+  align-items: baseline;
+  padding: clamp(0.9rem, 2vw, 1.4rem) 0;
+  border-bottom: 1px solid var(--line);
+  transition:
+    padding 0.3s cubic-bezier(0.2, 0.7, 0.2, 1),
+    color 0.2s;
+}
+
+.index-name {
+  font-size: clamp(2.2rem, 6.2vw, 5.25rem);
+  line-height: 1;
+}
+
+.index-role {
+  color: var(--muted);
+}
+
+.index-when {
+  color: var(--muted);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.index-when span {
+  color: var(--signal);
+}
+
+@media (hover: hover) {
+  .index:hover .index-row {
+    color: var(--muted);
+  }
+
+  .index .index-row:hover {
+    color: var(--ink);
+    padding-left: 1rem;
+  }
+
+  .index a.index-row:hover .index-name {
+    color: var(--signal);
+    font-style: italic;
+  }
+}
+
+@media (max-width: 760px) {
+  .index-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .index-name {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Pull quote */
+
+.pull {
+  margin: 0;
+  max-width: 20ch;
+  font-size: clamp(2.4rem, 6.5vw, 5.5rem);
+  line-height: 1.02;
+}
+
+.pull em {
+  color: var(--signal);
+}
+
+.prose.big {
+  max-width: 34ch;
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 3.6vw, 3rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.prose.big strong {
+  font-weight: 400;
+}
+
+/* Progress */
+
+.progress {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 2px;
+  background: var(--signal);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+/* Wordmark */
+
+.wordmark {
+  background: var(--block);
+  color: var(--block-ink);
+  font-size: clamp(4rem, 17.5vw, 20rem);
+  line-height: 0.8;
+  letter-spacing: -0.035em;
+  white-space: nowrap;
+  text-align: center;
+  padding: 0 0 0.12em;
+  overflow: hidden;
+}
+
+.wordmark span {
+  color: var(--signal);
 }
 
 /* Timeline */
