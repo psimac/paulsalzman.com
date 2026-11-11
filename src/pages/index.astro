@@ -1,0 +1,531 @@
+---
+import Base from '../layouts/Base.astro';
+
+const title = 'Paul Salzman | Organizational Strategy & Transformation Leader';
+const description =
+  'Paul Salzman. Organizational Strategy & Transformation Leader. Helping founders and executives restore clarity, align teams, and rebuild the systems that drive performance.';
+
+// Latest posts from the blog, fetched when the site is built.
+// If the feed cannot be reached, the build falls back to this list.
+type Post = { title: string; url: string; date: string };
+
+const fallbackPosts: Post[] = [
+  {
+    title: 'The Three-Month Test',
+    url: 'https://blog.paulsalzman.com/the-three-month-test/',
+    date: '2026-10-05',
+  },
+  {
+    title: 'Squirrel Torque',
+    url: 'https://blog.paulsalzman.com/squirrel-torque/',
+    date: '2026-06-23',
+  },
+  {
+    title: 'Grumble and Renew: The Hidden Economics Destroying Margins',
+    url: 'https://blog.paulsalzman.com/grumble-and-renew-the-hidden-economics-destroying-margins/',
+    date: '2026-05-21',
+  },
+];
+
+async function latestPosts(): Promise<Post[]> {
+  try {
+    const res = await fetch('https://blog.paulsalzman.com/rss/', {
+      signal: AbortSignal.timeout(8000),
+    });
+    if (!res.ok) return fallbackPosts;
+    const xml = await res.text();
+    const text = (s: string) =>
+      s
+        .replace(/^<!\[CDATA\[/, '')
+        .replace(/\]\]>$/, '')
+        .trim();
+    const posts = [...xml.matchAll(/<item>([\s\S]*?)<\/item>/g)]
+      .slice(0, 3)
+      .map((m) => {
+        const item = m[1];
+        const t = item.match(/<title>([\s\S]*?)<\/title>/)?.[1];
+        const l = item.match(/<link>([\s\S]*?)<\/link>/)?.[1];
+        const d = item.match(/<pubDate>([\s\S]*?)<\/pubDate>/)?.[1];
+        if (!t || !l || !d) return null;
+        const url = text(l);
+        if (!url.startsWith('https://blog.paulsalzman.com/')) return null;
+        return { title: text(t), url, date: new Date(d).toISOString().slice(0, 10) };
+      })
+      .filter((p): p is Post => p !== null);
+    return posts.length ? posts : fallbackPosts;
+  } catch {
+    return fallbackPosts;
+  }
+}
+
+const posts = await latestPosts();
+const fmt = new Intl.DateTimeFormat('en-US', {
+  month: 'short',
+  day: 'numeric',
+  year: 'numeric',
+  timeZone: 'UTC',
+});
+
+const fixes = [
+  {
+    name: 'Clarity',
+    text: 'Diagnose breakdowns in decision-making, culture, roles, and expectations. Reveal what is actually happening inside an organization, not what people assume is happening.',
+  },
+  {
+    name: 'Alignment',
+    text: 'Rebuild operating systems, workflows, and leadership structures so teams move with shared purpose instead of competing priorities.',
+  },
+  {
+    name: 'Execution',
+    text: 'Turn strategy into reliable, repeatable systems. Establish rhythms of accountability, communication, and cross-functional coordination.',
+  },
+];
+
+const capabilities = [
+  'Fractional CSO / COO Support',
+  'Automotive Retail Strategy',
+  'Culture Architecture & Implementation',
+  'Operational Flow & Friction Removal',
+  'Organizational Diagnostics',
+  'AI Integration & Systems Design',
+  'Communication Systems',
+  'Transformation Roadmaps',
+  'Leadership Advisory',
+];
+
+const ventures = [
+  {
+    name: 'CreativeHydra',
+    meta: 'Business Systems & AI Consulting',
+    text: 'Helping small business owners align tools, processes, and teams so their business actually flows. Home of the FLOW business assessment.',
+    url: 'https://www.creativehydra.com',
+  },
+  {
+    name: 'Wheelio',
+    meta: 'Automotive Search & SaaS Platform',
+    text: 'Treating car shopping like a matching problem, not an ad auction.',
+    url: 'https://wheelio.com',
+  },
+  {
+    name: 'Advisory',
+    meta: 'Fractional CSO / COO',
+    text: 'Senior strategy and operations leadership for growth-stage companies.',
+    url: '#contact',
+  },
+  {
+    name: 'Mobile Notary',
+    meta: 'King & Snohomish Counties',
+    text: 'Certified mobile notary serving the greater Seattle area. Legal documents, affidavits, powers of attorney, and general notarizations at your location.',
+    url: 'https://notary.paulsalzman.com',
+  },
+];
+
+const socials = [
+  { name: 'LinkedIn', url: 'https://www.linkedin.com/in/paulsalzman/' },
+  { name: 'Instagram', url: 'https://www.instagram.com/psimac/' },
+  { name: 'Porsche IG', url: 'https://www.instagram.com/porschepaulpnw/' },
+  { name: 'X', url: 'https://x.com/psimac' },
+  { name: 'YouTube', url: 'https://www.youtube.com/@psimac' },
+  { name: 'Mastodon', url: 'https://mastodon.sdf.org/@psimac', rel: 'me' },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': 'https://paulsalzman.com/#person',
+      name: 'Paul Salzman',
+      url: 'https://paulsalzman.com',
+      image: 'https://paulsalzman.com/images/paul-salzman-800.webp',
+      jobTitle: 'Organizational Strategy & Transformation Leader',
+      description:
+        'Helping founders and executives restore clarity, align teams, and rebuild systems.',
+      sameAs: socials.map((s) => s.url).concat('https://blog.paulsalzman.com'),
+      hasOccupation: [
+        { '@type': 'Occupation', name: 'Organizational Strategy & Transformation Consultant' },
+        { '@type': 'Occupation', name: 'Notary Public' },
+      ],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': 'https://paulsalzman.com/#website',
+      url: 'https://paulsalzman.com',
+      name: 'Paul Salzman | Organizational Strategy',
+      publisher: { '@id': 'https://paulsalzman.com/#person' },
+    },
+    {
+      '@type': 'Organization',
+      '@id': 'https://paulsalzman.com/#organization',
+      name: 'Paul Salzman Consulting',
+      url: 'https://paulsalzman.com',
+      logo: 'https://paulsalzman.com/images/favicon-512.png',
+      founder: { '@id': 'https://paulsalzman.com/#person' },
+      contactPoint: {
+        '@type': 'ContactPoint',
+        contactType: 'consulting',
+        email: 'paul@paulsalzman.com',
+      },
+    },
+  ],
+};
+---
+
+<Base title={title} description={description}>
+  <script slot="head" type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd)} />
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="#top">Paul Salzman<span>.</span></a>
+      <nav class="nav mono" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#services">What I Fix</a>
+        <a href="#writing">Writing</a>
+        <a href="#ventures">Ventures</a>
+        <a class="out" href="https://blog.paulsalzman.com">Ich Spreche</a>
+        <a class="out" href="https://notary.paulsalzman.com">Mobile Notary</a>
+      </nav>
+      <a class="pill mono" href="#contact">Get in touch</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero wrap" id="top">
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow mono">
+            <b>Paul Salzman</b>
+            <span>Organizational Strategy & Transformation Leader</span>
+          </p>
+          <h1 class="serif">Organizations drift. <em>I find the source.</em></h1>
+          <p class="lede">
+            <strong>Flow breaks down. Decisions stall, teams misalign, execution grinds.</strong>
+            {' '}I find where it starts and rebuild the systems that get things moving again.
+          </p>
+          <div class="hero-cta">
+            <a class="btn" href="#contact">Get in touch <span aria-hidden="true">→</span></a>
+            <a class="link" href="#services">See what I fix</a>
+          </div>
+        </div>
+
+        <figure class="portrait">
+          <img
+            src="/images/paul-salzman-800.webp"
+            srcset="/images/paul-salzman-400.webp 400w, /images/paul-salzman-800.webp 800w"
+            sizes="(min-width: 760px) 24vw, 224px"
+            width="800"
+            height="800"
+            alt="Portrait of Paul Salzman, smiling"
+            fetchpriority="high"
+            decoding="async"
+          />
+          <figcaption class="mono">
+            <span>Paul Salzman</span>
+            <span>Greater Seattle</span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="drift" aria-hidden="true">
+        <svg data-drift preserveAspectRatio="none">
+          <path d=""></path>
+        </svg>
+        <div class="drift-labels mono">
+          <span>Drift</span>
+          <span>Flow</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <ul class="facts mono">
+        <li>Founder & Executive Strategy Advisor</li>
+        <li>Fractional CSO / COO</li>
+        <li>20+ Years Automotive & Tech</li>
+        <li>Operational Transformation</li>
+      </ul>
+    </div>
+
+    <section class="section wrap" id="about">
+      <div class="section-head reveal">
+        <p class="mono"><b>01</b> / Profile</p>
+        <h2 class="serif">About my work</h2>
+      </div>
+      <div class="split">
+        <div class="body reveal">
+          <div class="prose">
+            <p>
+              My work centers on <strong>organizational clarity</strong>: understanding how
+              companies drift, why teams misalign, and where execution breaks down. I help leaders
+              rebuild the systems, expectations, and communication patterns that allow teams to do
+              their best work again.
+            </p>
+            <p>
+              With two decades across <strong>automotive retail consulting</strong>,{' '}
+              <strong>technology strategy</strong>, and <strong>leadership advisory</strong>, I’ve
+              seen the same pattern everywhere. Companies succeed or fail based on the truth of how
+              well their people, systems, and decisions align. That belief defines everything I do.
+            </p>
+          </div>
+          <div class="principles">
+            <p class="mono">Core principles</p>
+            <p>Clarity. Alignment. Execution. <span>Culture that sustains them.</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services" style="padding-top:0">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <p class="mono"><b>02</b> / Services</p>
+          <h2 class="serif">What I fix</h2>
+        </div>
+        <div class="fixes">
+          {
+            fixes.map((f, i) => (
+              <article class="fix reveal" style={`--d:${i * 0.1}s`}>
+                <p class="mono">{`0${i + 1}`}</p>
+                <h3>{f.name}</h3>
+                <p>{f.text}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="marquee" aria-label="Capabilities">
+        <div class="marquee-track">
+          <ul>
+            {capabilities.map((c) => <li>{c}</li>)}
+          </ul>
+          <ul aria-hidden="true">
+            {capabilities.map((c) => <li>{c}</li>)}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap" id="writing" style="padding-top:0">
+      <div class="section-head reveal">
+        <p class="mono"><b>03</b> / Thinking</p>
+        <h2 class="serif">Writing</h2>
+      </div>
+      <div class="split">
+        <div class="body">
+          <p class="prose reveal" style="margin-bottom:2.5rem">
+            I write about organizational systems, leadership, the automotive industry, and the
+            philosophy of operational truth. The latest from <strong>Ich Spreche</strong>:
+          </p>
+          <div class="rows">
+            {
+              posts.map((p) => (
+                <a class="row reveal" href={p.url}>
+                  <span>
+                    <span class="row-title">{p.title}</span>
+                  </span>
+                  <time class="row-desc mono" datetime={p.date}>
+                    {fmt.format(new Date(p.date))}
+                  </time>
+                  <span class="row-arrow" aria-hidden="true">
+                    ↗
+                  </span>
+                </a>
+              ))
+            }
+          </div>
+          <div class="more reveal">
+            <a class="link" href="https://blog.paulsalzman.com">All posts on Ich Spreche</a>
+            <a class="link" href="https://medium.com/@psimac">Essays on Medium</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap" id="ventures" style="padding-top:0">
+      <div class="section-head reveal">
+        <p class="mono"><b>04</b> / Projects</p>
+        <h2 class="serif">Current ventures</h2>
+      </div>
+      <div class="rows">
+        {
+          ventures.map((v) => (
+            <a class="row reveal" href={v.url}>
+              <span>
+                <span class="row-title">{v.name}</span>
+                <span class="row-meta mono">{v.meta}</span>
+              </span>
+              <span class="row-desc">{v.text}</span>
+              <span class="row-arrow" aria-hidden="true">
+                {v.url.startsWith('#') ? '→' : '↗'}
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="section wrap" id="off-the-clock" style="padding-top:0">
+      <div class="section-head reveal">
+        <p class="mono"><b>05</b> / Off the clock</p>
+        <h2 class="serif">Cars, radios, and a patent</h2>
+      </div>
+      <div class="cards reveal">
+        <article class="card">
+          <p class="mono">Volunteer</p>
+          <h3>Porsche Club of America</h3>
+          <p>
+            Social Co-Chair for the Pacific Northwest Region since July 2023. Building community
+            and organizing events in one of the club’s most active chapters.
+          </p>
+          <a class="link" href="https://pnwr.org">pnwr.org</a>
+        </article>
+        <article class="card">
+          <p class="mono">On the air</p>
+          <h3>W7VLT</h3>
+          <p>Licensed amateur radio operator in the Puget Sound area. Car guy, tech guy, radio guy.</p>
+          <a class="link" href="https://mastodon.sdf.org/@psimac" rel="me">Mastodon</a>
+        </article>
+        <article class="card">
+          <p class="mono">Inventor</p>
+          <h3>SOScharger</h3>
+          <p>
+            Co-developer and primary designer of a hand-crank mobile phone charger. U.S. design
+            patent D698,311.
+          </p>
+          <a class="link" href="https://patents.google.com/patent/USD698311S1">View the patent</a>
+        </article>
+        <article class="card">
+          <p class="mono">Earlier chapters</p>
+          <h3>Builder and columnist</h3>
+          <p>
+            Co-founded HydraMedia in Kirkland, WA. Wrote columns for Computer Source and Computer
+            Consumer magazines.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="wrap contact-grid">
+        <div class="reveal">
+          <p class="mono">Contact</p>
+          <h2 class="serif">Feeling the <em>drift?</em></h2>
+          <p>
+            If you’re a founder, executive, or operator and feel your organization is drifting,
+            misaligned, or stuck, I can help you diagnose what’s really happening and chart a path
+            forward.
+          </p>
+          <p class="direct">
+            Or email directly:{' '}
+            <a class="link" href="mailto:paul@paulsalzman.com">paul@paulsalzman.com</a>
+          </p>
+        </div>
+
+        <form
+          class="form reveal"
+          name="contact"
+          method="POST"
+          action="/thank-you/"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+        >
+          <input type="hidden" name="form-name" value="contact" />
+          <p class="hp">
+            <label>Don’t fill this out if you’re human: <input name="bot-field" tabindex="-1" autocomplete="off" /></label>
+          </p>
+          <div class="field">
+            <label class="mono" for="name">Name</label>
+            <input id="name" name="name" type="text" autocomplete="name" placeholder="Your name" required />
+          </div>
+          <div class="field">
+            <label class="mono" for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required />
+          </div>
+          <div class="field">
+            <label class="mono" for="message">How can I help?</label>
+            <textarea id="message" name="message" rows="4" placeholder="Tell me a bit about your challenge."></textarea>
+          </div>
+          <button class="btn" type="submit">Send message <span aria-hidden="true">→</span></button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer mono">
+    <div class="wrap">
+      <p>© {new Date().getFullYear()} Paul Salzman</p>
+      <ul>
+        {
+          socials.map((s) => (
+            <li>
+              <a href={s.url} rel={s.rel}>
+                {s.name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    // The drift line: unsteady on the left, straight on the right.
+    // It settles as the visitor scrolls into the page.
+    const svg = document.querySelector<SVGSVGElement>('[data-drift]');
+    const path = svg?.querySelector('path');
+    const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (svg && path) {
+      let visible = true;
+      const draw = (t: number) => {
+        const w = svg.clientWidth;
+        const mid = svg.clientHeight / 2;
+        const calm = Math.min(1, window.scrollY / (window.innerHeight * 0.7));
+        let d = '';
+        for (let x = 0; x <= w; x += 6) {
+          const p = x / w;
+          const amp = (mid - 4) * Math.pow(1 - p, 1.6) * (1 - calm * 0.85);
+          const y =
+            mid +
+            amp *
+              (0.6 * Math.sin(x * 0.021 + t * 0.0011) +
+                0.4 * Math.sin(x * 0.047 - t * 0.0017));
+          d += `${x ? 'L' : 'M'}${x} ${y.toFixed(1)}`;
+        }
+        path.setAttribute('d', d);
+      };
+
+      if (still) {
+        draw(0);
+        window.addEventListener('resize', () => draw(0));
+      } else {
+        new IntersectionObserver(([e]) => (visible = e.isIntersecting)).observe(svg);
+        const tick = (t: number) => {
+          if (visible) draw(t);
+          requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      }
+    }
+
+    // Reveal sections as they scroll into view.
+    const items = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(
+        (entries) => {
+          for (const e of entries) {
+            if (e.isIntersecting) {
+              e.target.classList.add('in');
+              io.unobserve(e.target);
+            }
+          }
+        },
+        { rootMargin: '0px 0px -8% 0px' },
+      );
+      items.forEach((el) => io.observe(el));
+    } else {
+      items.forEach((el) => el.classList.add('in'));
+    }
+  </script>
+</Base>
